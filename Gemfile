@@ -77,3 +77,11 @@ gem "omniauth-rails_csrf_protection"
 gem 'omniauth-facebook'
 gem 'koala'
 gem 'instagram_graph_api'
+gem 'whenever', require: false
+gem 'will_paginate'
+# gem 'kaminari'
+gem 'ice_cube'
+gem 'countries'
+gem 'country-select'
+
+gem 'iso_country_codes'
