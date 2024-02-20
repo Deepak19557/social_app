@@ -1,0 +1,20 @@
+<%= form_for(object, url: book_path(object), method: :patch) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :language %>
+    <%= f.text_field :language, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :author_name %>
+    <%= f.text_field :author_name, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Update', class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -10,5 +10,9 @@ Rails.application.routes.draw do
   root "homes#index"
   resources :homes
   get 'facebook_data' ,to: 'homes#facebook_data'
-
+  resources :books
+  get 'download_csv', to: 'books#download_csv'
+  post 'import_csv', to: 'books#import_csv'
+  get 'delete_all_book', to: 'books#delete_all_book'
+  get 'show_specific_language', to: 'books#show_specific_language'
 end
