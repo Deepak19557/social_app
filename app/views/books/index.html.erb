@@ -62,33 +62,32 @@
         </style>
     </head>
     <body>
-        <div class="header">
-            <a href="#default" class="logo">Library</a>
-            <div class="header-right">
-                <%= link_to 'Back', root_path, class: 'btn btn-info' %> <%= link_to "Download Book List", download_csv_path, class: 'btn btn-warning' %> <%= link_to "Delete All", delete_all_book_path, data: {confirm: 'Are you sure want to
-                delete all?'}, class: 'btn btn-danger' %>
-            </div>
+      <div class="header">
+        <a href="#default" class="logo">Library</a>
+        <div class="header-right">
+          <%= link_to 'Back', root_path, class: 'btn btn-info' %> <%= link_to "Download Book List", download_csv_path, class: 'btn btn-warning' %> <%= link_to "Delete All", delete_all_book_path, data: {confirm: 'Are you sure want to
+          delete all?'}, class: 'btn btn-danger' %>
+          <%= link_to 'download_pdf',  download_pdf_path(format: :pdf), class: 'btn btn-info' %>
         </div>
+      </div>
     </body>
 </html>
 <h3 style="text-align: center;">
     Import Book data <%=form_tag import_csv_path, multipart: true do %>
     <div style="text-align: center;">
-        <%=file_field_tag :file%>
+        <%=file_field_tag :file, multiple: :true %>
     </div>
     <%=submit_tag "Import CSV", class: "btn btn-warning" %> <%end%>
 </h3>
 
-
-
-<%= form_with url: books_path, method: :get, id: 'abc' do |f| %>
+<%= form_with url: books_path, method: :get,remote: true, id: 'abc' do |f| %>
   <div class="field">
     <%= f.label :language %>
-    <% @bookss = Book.pluck(:language).uniq %>
-    <%= f.select :language, options_for_select(@bookss), prompt: "Select a Language" %>
-    <%#= f.collection_select :language, Book.all, :language, :language, selected: f.object %>
+    <% @languages = Book.pluck(:language).uniq %>
+    <%= f.select :language, options_for_select(@languages), { prompt: "Select a Language" }, { onchange: "this.form.submit();" } %>
   </div>
 <% end %>
+
 <%= render 'form' %>
 <br />
 <% if Book.exists? %>
@@ -139,16 +138,55 @@
 </table>
 <%end%>
 
-<%#= will_paginate @books %>
-<%#= page_entries_info @books %>
-<%#= paginate @books %>
+<%#= will_paginate @books1 %>
+<%#= page_entries_info @books1 %>
 
+<%= link_to 'alert', id: 'alert_id' %>
+
+
+
+<p id="p1">jQuery is fun!!</p>
+
+
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("#test1").text("Hello world!");
+  });
+  $("#btn2").click(function(){
+    $("#test2").html("<b>Hello world!</b>");
+  });
+  $("#btn4").click(function(){
+    $("#test3").val("Dolly Duck");
+  });
+});
+</script>
+</head>
+<body>
+
+<p id="test1">This is a paragraph.</p>
+<p id="test2">This is another paragraph.</p>
+
+<p>Input field: <input type="text" id="test3" value="Mickey Mouse"></p>
+
+<button id="btn1">Set Text</button>
+<button id="btn2">Set HTML</button>
+<button id="btn3">Set Value</button>
+
+<%= button_to 'set set', id: 'btn4' %>
+<%= link_to 'Set Wet', data: {confirm: 'are you sure ?'}, :class => 'delete_book btn btn-danger' %>
 
 
 <script type="text/javascript">
-$(document).ready( function(){
-  $('select').on("change",function(e){
-    $('#abc').submit();
+// $(document).ready( function(){
+  // $('select').on("change",function(e){
+    // $('#abc').submit();
+  // });
+// });
+
+$(document).ready(function(){
+  $("alert_id").click(function(){
+    $("#p1").css("color", "red").slideUp(2000).slideDown(2000);
   });
 });
 </script>

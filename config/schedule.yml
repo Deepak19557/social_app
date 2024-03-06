@@ -1,0 +1,4 @@
+UpdateAuthorJob:
+  cron: "* * * * *"  # Run every hour
+  class: "UpdateAuthorJob"
+  queue: "default"

@@ -1,7 +1,6 @@
 class BooksController < ApplicationController
 	def create
 		@book = Book.create(name: params[:name], language: params[:language], author_name: params[:author_name])
-		# MyJob.perform_now(@book)
 		redirect_to books_path
 	end
 
@@ -46,6 +45,34 @@ class BooksController < ApplicationController
       format.js   { render :layout => false }
    	end
 	end
+
+	def process_import_csv
+    if params[:csv_file].present?
+      csv_text = params[:csv_file].read
+      csv = CSV.parse(csv_text, headers: true)
+
+      csv.each do |row|
+        Book.create!(row.to_hash)
+      end
+
+      redirect_to admin_books_path, notice: "CSV file imported successfully."
+    else
+      redirect_to admin_books_path, alert: "No CSV file selected."
+    end
+  end
+
+	def download_pdf
+	 @book = Book.last
+	 @books = Book.all
+	 respond_to do |format|
+		 format.html
+		 format.pdf do
+			 @pdf = render_to_string pdf: "Book #{@book.name}", template: "books/download_pdf", encoding: "UTF-8", formats: [:html]
+			 send_data(@pdf, filename: "#{@book.name}.pdf", type: "application/pdf", disposition: 'attachment')
+		 end
+	 end
+	end
+
 
 	private
 

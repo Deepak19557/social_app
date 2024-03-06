@@ -1,0 +1,7 @@
+<%= form_tag process_import_csv_admin_books_path, multipart: true do %>
+  <div class="field">
+    <%= label_tag :csv_file, 'Select CSV File' %>
+    <%= file_field_tag :csv_file %>
+  </div>
+  <%= submit_tag 'Import', class: 'button' %>
+<% end %>

@@ -9,3 +9,43 @@
   </thead>
 </table>
 <body>
+<h5 style="text-align:center;" >
+  <%= link_to "Multiple CSV Upload", new_upload_path, class: 'btn btn-info' %>  
+  <%= link_to 'download_author_pdf',  download_author_pdf_path(format: :pdf), class: 'btn btn-warning' %>
+  <%= link_to 'download_author_csv',  download_author_csv_path(format: :pdf), class: 'btn btn-dark' %>
+  <%= link_to 'Go for Authors', authors_path, method: :get, class: 'btn btn-warning' %>
+</h5>
+
+
+<%= form_with url: chatgpt_path, method: :get do |f| %>
+  <%= f.label :"search" %><br>
+  <%= f.text_field :search, placeholder:"search info" %><br><br>
+  <%= f.submit 'search', class: 'btn btn-primary' %>
+<% end %>
+
+<!-- 
+<br><br><br>
+<table class="table table-striped table-bordered table-hover friend_list">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @authors.each do |author| %>
+            <tr class="size">
+                <td><%= author.id %></td>
+                <td><%= author.number %></td>
+                <td><%= author.name %></td>
+                <td><%= author.email %></td>
+                <td><%= link_to "Edit", edit_author_path(author), remote: true, data: { toggle: "modal", target: "#editModal" } %></td>
+            </tr>
+        <% end%>
+    </tbody>
+</table>   -->
+
+

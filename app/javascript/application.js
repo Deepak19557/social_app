@@ -6,6 +6,7 @@ import "bootstrap"
 import "jquery"
 import "jquery_ujs"
 
+
 $( document ).ready(function (){
     console.log("ready");
 });

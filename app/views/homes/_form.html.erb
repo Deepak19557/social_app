@@ -1,0 +1,33 @@
+<div class="container">
+  <h2 style="text-align: center;" >Form</h2>
+  <button style="text-align: center;" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">New</button>
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+        <h4>Book Form</h4>
+        </div>
+        <div class="modal-body">
+          <%= form_with url: books_path do |f| %>
+            <div class="container">
+              <div class="field form-group">
+                <%= f.label :"name" %><br>
+                <%= f.text_field :name, placeholder:"book name" %><br>
+              </div>
+              <div class="field form-group">
+                <%= f.label :"language" %><br>
+                <%= f.text_field :language, placeholder: "language" %><br>
+              </div>
+              <div class="field form-group">
+                <%= f.submit class: 'btn btn-primary' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
