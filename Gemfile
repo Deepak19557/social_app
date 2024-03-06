@@ -5,6 +5,8 @@ ruby "3.0.0"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.2"
 
+gem 'pg'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -52,7 +54,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-
+  gem 'letter_opener', '~> 1.4', '>= 1.4.1'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
@@ -78,10 +80,24 @@ gem 'omniauth-facebook'
 gem 'koala'
 gem 'instagram_graph_api'
 gem 'whenever', require: false
-gem 'will_paginate'
-# gem 'kaminari'
+# gem 'will_paginate'
+gem 'kaminari'
 gem 'ice_cube'
 gem 'countries'
 gem 'country-select'
+# gem 'pg_dump'
 
 gem 'iso_country_codes'
+gem 'httparty'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'activeadmin'
+# gem 'sidekiq', '~> 7.0'
+# gem 'redis', '>= 4.0.1'
+gem 'redis', '>= 4.0.1'
+gem 'sidekiq-cron', require: 'sidekiq/cron'
+
+gem 'sidekiq'
+gem 'activeadmin_quill_editor'
+gem 'ckeditor'
+gem 'arctic_admin'

@@ -1,0 +1,41 @@
+<style>
+  .field_width{
+    width: 440px !important;
+  }
+</style>
+
+<div class="container">
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+        <h4>Book Form</h4>
+        </div>
+        <div class="modal-body">
+          <%= form_with url: authors_path do |f| %>
+            <div class="container">
+              <div class="field form-group">
+                <%= f.label :"name" %><br>
+                <%= f.text_field :name, placeholder:"name",class: 'field_width' %><br>
+              </div>
+              <div class="field form-group">
+                <%= f.label :"number" %><br>
+                <%= f.text_field :number, placeholder: "number", class: 'field_width' %><br>
+              </div>
+              <div class="field form-group">
+                <%= f.label :"email" %><br>
+                <%= f.text_field :email, placeholder: "email", class: 'field_width' %><br>
+              </div>
+              <div class="field form-group">
+                <%= f.submit class: 'btn btn-primary field_width' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

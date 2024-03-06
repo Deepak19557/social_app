@@ -1,0 +1,17 @@
+<br><br><br>
+<%= form_tag process_uploads_path, multipart: true do %>
+  <div class="container">
+    <div class="field form-group">
+      <%= label_tag 'books_csv', 'Upload Books CSV' %>
+      <%= file_field_tag 'books_csv' %>
+    </div>
+
+    <div class="field form-group">
+      <%= label_tag 'authors_csv', 'Upload Authors CSV' %>
+      <%= file_field_tag 'authors_csv' %><br>
+    </div>  
+    <%= submit_tag 'Upload CSVs', class: "btn btn-primary"  %>
+  </div>
+<% end %>
+
+<%= link_to "Back", root_path, class: 'btn btn-info' %>

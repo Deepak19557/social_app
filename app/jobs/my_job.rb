@@ -1,7 +1,6 @@
 class MyJob < ApplicationJob
   queue_as :default
   # def perform(book)
-  #   debugger
   #   @book = book
   #   book_name = @book.name
   #   Book.all.each do |book|
@@ -11,7 +10,9 @@ class MyJob < ApplicationJob
   #   end
   # end
 
-  def perform(*arg)
-    Book.last.update(language: 'marathi')
+  def perform()
+    Author.all.each do |author|
+      author.update(email: "raj#{rand(100..1000)}@yopmail.com")
+    end
   end
 end
