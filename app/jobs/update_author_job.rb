@@ -4,7 +4,6 @@ class UpdateAuthorJob < ApplicationJob
   queue_as :default
 
   def perform()
-    debugger
     Author.last.update!(name: 'ramakant ji')  
   end
 

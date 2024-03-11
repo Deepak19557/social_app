@@ -4,6 +4,15 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   mount Sidekiq::Web => '/sidekiq'
+
+  resources :books do
+    member do
+      get 'download_pdf'
+    end
+  end
+
+  resources :foods
+
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

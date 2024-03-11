@@ -1,0 +1,8 @@
+# app/views/admin/posts/_upload_csv.html.erb
+
+<%= active_admin_form_for url: upload_csv_admin_foods_url do |f| %>
+  <%= f.input :file, as: :file, multiple: true %>
+  <%= f.actions do %>
+    <%= f.action :submit, label: "Upload CSV" %>
+  <% end %>
+<% end %>

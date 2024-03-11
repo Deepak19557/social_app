@@ -1,6 +1,14 @@
 class Author < ApplicationRecord
 
-	after_save :author_info,:send_mail
+	# after_save :author_info,:send_mail
+
+	# has_one_attached :image
+
+	def self.ransackable_attributes(auth_object = nil)
+    ["email", "id", "id_value", "name", "number"]
+  end
+
+  
 
 	def author_info
 		MailJob.perform_later(self)
@@ -11,8 +19,6 @@ class Author < ApplicationRecord
 		WelcomeMailer.welcome_mail_to_user(self, 'grapes_template', data).deliver_now
 	end
 
-	def display_name
-		"#{email}"
-	end
+
 
 end

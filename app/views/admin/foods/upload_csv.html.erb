@@ -1,0 +1,12 @@
+<div style="text-align: center; margin-top: 20px;">
+  <h2 style="margin-bottom: 10px;">Upload CSV</h2>
+
+  <%= form_with(url: upload_csv_admin_foods_path, method: :post, local: false, multipart: true) do |form| %>
+    <div style="margin-bottom: 10px;">
+      <%= form.file_field :file, style: "padding: 5px;" %>
+    </div>
+    <div>
+      <%= form.submit "Upload CSV", style: "padding: 8px 20px; background-color: #5E6469; color: #fff; border: none; cursor: pointer; width: 23%;" %>
+    </div>
+  <% end %>
+</div>

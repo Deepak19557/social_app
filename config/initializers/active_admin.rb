@@ -353,4 +353,12 @@ ActiveAdmin.setup do |config|
   # You can switch to using Webpacker here.
   #
   # config.use_webpacker = true
+
+  config.namespace :admin do |admin|
+    admin.build_menu do |menu|
+      menu.add label: 'Book', priority: 2
+      menu.add label: 'EmailTemplate', priority: 1
+    end
+  end
+
 end

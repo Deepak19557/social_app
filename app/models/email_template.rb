@@ -5,6 +5,10 @@ class EmailTemplate < ApplicationRecord
     ["content", "created_at", "id", "id_value", "template_name", "updated_at"]
   end
 
+  def display_name
+    "#{template_name}"
+  end
+
   def self.change_variable(content, data)
   	data.each do |key, value|
   		content.gsub!("%{#{key}}", value.to_s )
